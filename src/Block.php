@@ -29,6 +29,19 @@ abstract class Block {
       $settings['category'] = 'common';
     }
 
+    if( !isset( $settings['description'] ) ) {
+      $settings['description'] = 'A custom ACF Block';
+    }
+
+    if( !isset( $settings['icon'] ) ) {
+      $settings['icon'] = 'dashicons-editor-code';
+    }
+
+    if( !isset( $settings['keywords'] ) ) {
+      $settings['keywords'] = array( 'ACF', 'custom' );
+    }
+
+
     /**
      * Register block
      */
@@ -37,6 +50,9 @@ abstract class Block {
         'name'              => $settings['name'],
         'title'             => $settings['title'],
         'category'          => $settings['category'],
+        'description'       => $settings['description'],
+        'icon'              => $settings['icon'],
+        'keywords'          => $settings['keywords'],
         'render_callback'   => get_called_class() . '::PrepareRender',
       ]);
 
