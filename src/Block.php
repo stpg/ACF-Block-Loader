@@ -40,6 +40,15 @@ abstract class Block {
     if( !isset( $settings['keywords'] ) ) {
       $settings['keywords'] = array( 'ACF', 'custom' );
     }
+    
+    if( !isset( $settings['enqueue_assets'] ) ) {
+      $settings['enqueue_assets'] = null;
+    } 
+
+    if( !isset( $settings['multiple'] ) ) {
+      $settings['multiple'] = true;
+    } 
+
 
 
     /**
@@ -54,6 +63,8 @@ abstract class Block {
         'icon'              => $settings['icon'],
         'keywords'          => $settings['keywords'],
         'render_callback'   => get_called_class() . '::PrepareRender',
+        'enqueue_assets'	  => $settings['enqueue_assets'],
+        'multiple'          => $settings['multiple']
       ]);
 
       if ( isset( $settings['fields'] ) ) {
