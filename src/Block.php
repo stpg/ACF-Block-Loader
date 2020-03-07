@@ -58,7 +58,7 @@ abstract class Block {
     }
 
     if( !isset( $settings['mode'] ) ) {
-      $settings['mode'] = 'auto';
+      $settings['mode'] = 'preview';
     }
     
     if( !isset( $settings['supports_mode'] ) ) {
