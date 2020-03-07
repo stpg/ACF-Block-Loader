@@ -64,9 +64,11 @@ abstract class Block {
     if( !isset( $settings['supports_mode'] ) ) {
       $settings['supports_mode'] = true;
     } 
+   
 
-
-
+    if( !isset( $settings['render_callback'] ) ) {
+      $settings['render_callback'] =  get_called_class() . '::PrepareRender';
+    } 
 
     /**
      * Register block
@@ -79,7 +81,7 @@ abstract class Block {
         'description'       => $settings['description'],
         'icon'              => $settings['icon'],
         'keywords'          => $settings['keywords'],
-        'render_callback'   => get_called_class() . '::PrepareRender',
+        'render_callback'   => $settings['render_callback'],
         'enqueue_assets'	  => $settings['enqueue_assets'],
         'align'             => $settings['align'],
         'mode'              => $settings['mode'],
