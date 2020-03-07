@@ -45,9 +45,26 @@ abstract class Block {
       $settings['enqueue_assets'] = null;
     } 
 
-    if( !isset( $settings['multiple'] ) ) {
-      $settings['multiple'] = true;
+    if( !isset( $settings['supports_multiple'] ) ) {
+      $settings['supports_multiple'] = true;
     } 
+
+    if( !isset( $settings['supports_align'] ) ) {
+      $settings['supports_align'] = array( 'left', 'right', 'full' );
+    }
+
+    if( !isset( $settings['align'] ) ) {
+      $settings['align'] = '';
+    }
+
+    if( !isset( $settings['mode'] ) ) {
+      $settings['mode'] = 'auto';
+    }
+    
+    if( !isset( $settings['supports_mode'] ) ) {
+      $settings['supports_mode'] = true;
+    } 
+
 
 
 
@@ -64,7 +81,13 @@ abstract class Block {
         'keywords'          => $settings['keywords'],
         'render_callback'   => get_called_class() . '::PrepareRender',
         'enqueue_assets'	  => $settings['enqueue_assets'],
-        'multiple'          => $settings['multiple']
+        'align'             => $settings['align'],
+        'mode'              => $settings['mode'],
+        'supports'          => [
+          'multiple' => $settings['supports_multiple'],
+          'align'    => $settings['supports_align'],
+          'mode'     => $settings['supports_mode']
+        ]
       ]);
 
       if ( isset( $settings['fields'] ) ) {
